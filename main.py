@@ -1,13 +1,14 @@
-import pygame
+
 from settings import *
 from text import Text
+from TextAndButton import*
+import pygame
 pygame.init()
 
 win = pygame.display.set_mode(WIN_SIZE, pygame.FULLSCREEN)
 pygame.display.set_caption(CAPTION)
 clock = pygame.time.Clock()
 scene = 'reg_log_menu'
-reg_text = Text(10, 360, 'REGISTRATION', 48, MAIN_FONT, MAIN_TEXT_COLOR)
 
 while True:
     pygame.display.flip()
@@ -20,7 +21,15 @@ while True:
             mouse_x, mouse_y = event.pos
             if reg_text.rect.collidepoint(mouse_x, mouse_y) and scene == 'reg_log_menu':
                 scene = 'reg'
-
+            if log_text.rect.collidepoint(mouse_x, mouse_y) and scene == 'reg_log_menu':
+                scene = 'log'
+            if back_text.rect.collidepoint(mouse_x, mouse_y) and (scene == 'reg' or scene == 'log'):
+                scene = 'reg_log_menu'
     if scene == 'reg_log_menu':
         reg_text.show(win)
+        log_text.show(win)
     
+    if scene == 'reg':
+        back_text.show(win)
+    if scene == 'log':
+        back_text.show(win)
