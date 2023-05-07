@@ -28,8 +28,11 @@ while True:
     if scene == 'reg_log_menu':
         reg_text.show(win)
         log_text.show(win)
+        game_name.show(win)
     
     if scene == 'reg':
+        reg_title.show(win)
         back_text.show(win)
     if scene == 'log':
         back_text.show(win)
+        log_title.show(win)
