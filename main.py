@@ -43,6 +43,10 @@ while True:
                 scene = 'log'
             if back_text.rect.collidepoint(mouse_x, mouse_y) and (scene == 'reg' or scene == 'log'):
                 scene = 'reg_log_menu'
+            if reg_button.rect.collidepoint(mouse_x, mouse_y) and scene == 'reg':
+                print("coming soon")
+            if log_button.rect.collidepoint(mouse_x, mouse_y) and scene == 'log':
+                print("coming soon")
         if event.type == pygame.KEYDOWN:
             if scene == 'reg' or 'log':
                 #!
@@ -65,7 +69,9 @@ while True:
             input_field.show(win)
         reg_title.show(win)
         back_text.show(win)
+        reg_button.show(win)
     if scene == 'log':
+        log_button.show(win)
         for input_field in input_field_list:
             input_field.show(win)
         back_text.show(win)

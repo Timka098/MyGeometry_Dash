@@ -34,6 +34,8 @@ try:
     game_name = Text(10, 70, words[3], 140, MAIN_FONT, MAIN_TEXT_COLOR)
     reg_title = Text(10, 70, words[4], 140, MAIN_FONT, MAIN_TEXT_COLOR)
     log_title = Text(10, 70, words[5], 140, MAIN_FONT, MAIN_TEXT_COLOR)
+    log_button = Text(10, 320, words[1], 48, MAIN_FONT, MAIN_TEXT_COLOR)
+    reg_button = Text(10, 320, words[0], 48, MAIN_FONT, MAIN_TEXT_COLOR)
     input_field_list = [InputField(10, 200, 500, 50, MAIN_TEXT_COLOR, None, (0,0,0),
                            words[6], 48, MAIN_FONT, INPUT_MAIN_TEXT_COLOR),
                         InputField(10, 260, 500, 50, MAIN_TEXT_COLOR, None, (0,0,0),
