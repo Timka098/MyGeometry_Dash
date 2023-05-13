@@ -4,6 +4,7 @@ from settings import *
 from box import Box
 from InputField import InputField
 
+
 try:
     if LANGUAGE == 'english':
         words = ['REGISTRATION',
@@ -12,7 +13,8 @@ try:
                  'GAME NAME',
                  'REGISTER AN ACCOUNT',
                  'LOGIN AN ACCOUNT',
-                 ''
+                 'NAME',
+                 'PASSWORD'
                 ]
     elif LANGUAGE == 'ukraine':
         words = ['РЕГІСТРАЦІЯ',
@@ -35,7 +37,7 @@ try:
     input_field_list = [InputField(10, 200, 500, 50, MAIN_TEXT_COLOR, None, (0,0,0),
                            words[6], 48, MAIN_FONT, INPUT_MAIN_TEXT_COLOR),
                         InputField(10, 260, 500, 50, MAIN_TEXT_COLOR, None, (0,0,0),
-                           words[6], 48, MAIN_FONT, INPUT_MAIN_TEXT_COLOR)
+                           words[7], 48, MAIN_FONT, INPUT_MAIN_TEXT_COLOR)
                            ]
 
 except NameError:

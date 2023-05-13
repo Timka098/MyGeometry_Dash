@@ -30,10 +30,13 @@ while True:
                     input_field.border_width = None
                     #якщо ми натиснули на кнопку
                     if input_field.rect.collidepoint(mouse_x, mouse_y):
+                        input_field.text.content = ''
                         #розмір виділення збільшити
                         input_field.border_width = 5
                         #кнопка на яку ми нажали = input_field
                         selected_input_field = input_field
+                    if input_field.border_width == None:
+                         input_field.text.content = 'ascvf'
             if reg_text.rect.collidepoint(mouse_x, mouse_y) and scene == 'reg_log_menu':
                 scene = 'reg'
             if log_text.rect.collidepoint(mouse_x, mouse_y) and scene == 'reg_log_menu':
@@ -47,11 +50,10 @@ while True:
                     # додати текст
                     if len(selected_input_field.text.content) < 20:
                         selected_input_field.text.content += event.unicode
-                    #! if event.unicode == pygame.K_BACKSPACE:
-                    #!     selected_input_field.text.content[:-2]
+                    if event.key == pygame.K_BACKSPACE:
+                        selected_input_field.text.content = selected_input_field.text.content[:-2]
                     # оновити текст
                     selected_input_field.text.update()
-            
 
     if scene == 'reg_log_menu':
         reg_text.show(win)
