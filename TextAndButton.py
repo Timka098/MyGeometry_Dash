@@ -23,7 +23,8 @@ try:
                  'ІМ\'Я ГРИ',
                  'ЗАРЕЄСТРУВАТИСЬ',
                  'УВІЙТИ В АККАУНТ',
-                 '']
+                 'ІМ\'Я',
+                 'ПАРОЛЬ']
 
     else:
         raise ValueError(f'Unsupported language: {LANGUAGE}')
