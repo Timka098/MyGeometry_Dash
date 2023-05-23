@@ -4,7 +4,6 @@ from settings import *
 from box import Box
 from InputField import InputField
 
-
 try:
     if LANGUAGE == 'english':
         words = ['REGISTRATION',

@@ -1,5 +1,13 @@
-import os
+import pygame, os
+from InputField import*
+from settings import*
 
 # повний шлях 
 def abspath(path):
     return os.path.join(os.path.abspath(__file__ + '/..'), path)
+
+def show_error(text_content, time, win):
+    field = InputField(0, -20, WIN_SIZE[0], WIN_SIZE[1],
+                       INPUT_MAIN_TEXT_COLOR, 10, MAIN_TEXT_COLOR,
+                       text_content, 12, MAIN_FONT, MAIN_TEXT_COLOR)
+    field.show(win)

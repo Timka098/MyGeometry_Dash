@@ -1,5 +1,6 @@
 import sqlite3, hashlib
 from utils import*
+import pygame
 
 # захешувати
 def hash_user_password(user_password):
@@ -31,20 +32,15 @@ def create_user(user_name, user_password):
     conn.close()
 
 # залогінити юзера
-def user_login(user_name, user_password, R, G, B):
-    R_old = R
+def user_login(user_name, user_password, win):
 
     conn = sqlite3.connect(abspath('data_base.db'))
     cur = conn.cursor()
     
     cur.execute("SELECT * FROM user WHERE user_name = ? AND user_password = ?", (user_name, hash_user_password(user_password)))
     # ми перебираєм юзерів, якщо серед них нема нашого:
-    print(R, G, B)
     if cur.fetchone() == None:
-        R = 255
-        while R > R_old == False:
-            R -= 1
-            cur.execute("SELECT * FROM user WHERE user_name = ? AND user_password = ?", (user_name, hash_user_password(user_password)))
+        show_error("user name or password isn't valid", 2, win)
         print("user name or password isn't valid")
     else: print("login is successful")
     conn.close()

@@ -11,7 +11,7 @@ pygame.init()
 win = pygame.display.set_mode(WIN_SIZE, pygame.FULLSCREEN)
 pygame.display.set_caption(CAPTION)
 clock = pygame.time.Clock()
-scene = 'game_lvl_0'
+scene = 'reg_log_menu'
 selected_input_field = None
 
 create_db()
@@ -51,7 +51,7 @@ while True:
             if reg_button.rect.collidepoint(mouse_x, mouse_y) and scene == 'reg':
                 create_user(input_field_list[0].text.content, input_field_list[1].text.content)
             if log_button.rect.collidepoint(mouse_x, mouse_y) and scene == 'log':
-                user_login(input_field_list[0].text.content, input_field_list[1].text.content, MAIN_TEXT_COLOR[0], MAIN_TEXT_COLOR[1], MAIN_TEXT_COLOR[2])
+                user_login(input_field_list[0].text.content, input_field_list[1].text.content, win)
 
 
         
@@ -89,4 +89,4 @@ while True:
         bg.show(win)
         for i in lvl_obj:
             i.show(win)
-            i.x -= 8
+            i.x -= 12
