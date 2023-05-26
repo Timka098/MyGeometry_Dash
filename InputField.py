@@ -1,7 +1,7 @@
 import pygame
 from settings import*
 from text import Text
-from TextAndButton import*
+#from TextAndButton import*
 from box import Box
 
 #клас

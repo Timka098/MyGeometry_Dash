@@ -6,14 +6,15 @@ from InputField import InputField
 
 try:
     if LANGUAGE == 'english':
-        words = ['REGISTRATION',
-                 'LOGIN',
-                 'BACK TO MENU',
-                 'GAME NAME',
-                 'REGISTER AN ACCOUNT',
-                 'LOGIN AN ACCOUNT',
-                 'NAME',
-                 'PASSWORD'
+        words = ['registration',
+                'login',
+                'back to menu',
+                'game name',
+                'register an account',
+                'login an account',
+                'name',
+                'password',
+                 "error, incorrect name or password."
                 ]
     elif LANGUAGE == 'ukraine':
         words = ['РЕГІСТРАЦІЯ',
@@ -23,7 +24,8 @@ try:
                  'ЗАРЕЄСТРУВАТИСЬ',
                  'УВІЙТИ В АККАУНТ',
                  'ІМ\'Я',
-                 'ПАРОЛЬ']
+                 'ПАРОЛЬ',
+                 ]
 
     else:
         raise ValueError(f'Unsupported language: {LANGUAGE}')

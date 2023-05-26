@@ -42,7 +42,11 @@ def user_login(user_name, user_password, win):
     if cur.fetchone() == None:
         show_error("user name or password isn't valid", 2, win)
         print("user name or password isn't valid")
-    else: print("login is successful")
+        return False
+    else:
+        print("login is successful")
+        return True
     conn.close()
+    
 
 

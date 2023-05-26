@@ -4,7 +4,7 @@ from text import Text
 from TextAndButton import*
 from image import*
 from levels import*
-import pygame
+import pygame, utils
 pygame.init()
 
 
@@ -66,6 +66,8 @@ while True:
                         selected_input_field.text.content = selected_input_field.text.content[:-2]
                     # оновити текст
                     selected_input_field.text.update()
+    if user_login(input_field_list[0].text.content, input_field_list[1].text.content, win) == False:
+        utils.show_error(words[8], 2, win)
 
     if scene == 'reg_log_menu':
         reg_text.show(win)

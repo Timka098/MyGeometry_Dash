@@ -1,4 +1,4 @@
-import pygame, os
+import pygame, os, time
 from InputField import*
 from settings import*
 
@@ -6,8 +6,10 @@ from settings import*
 def abspath(path):
     return os.path.join(os.path.abspath(__file__ + '/..'), path)
 
-def show_error(text_content, time, win):
-    field = InputField(0, -20, WIN_SIZE[0], WIN_SIZE[1],
+def show_error(text_content, seconds, win):
+    field = InputField(0, 0, WIN_SIZE[0]-10, 50,
                        INPUT_MAIN_TEXT_COLOR, 10, MAIN_TEXT_COLOR,
                        text_content, 12, MAIN_FONT, MAIN_TEXT_COLOR)
     field.show(win)
+    
+    
