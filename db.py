@@ -41,7 +41,7 @@ def user_login(user_name, user_password, win):
     # ми перебираєм юзерів, якщо серед них нема нашого:
     if cur.fetchone() == None:
         show_error("user name or password isn't valid", 2, win)
-        print("user name or password isn't valid")
+        #print("user name or password isn't valid")
         return False
     else:
         print("login is successful")

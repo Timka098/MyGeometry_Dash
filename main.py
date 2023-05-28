@@ -3,16 +3,20 @@ from settings import *
 from text import Text
 from TextAndButton import*
 from image import*
-from levels import*
+from sprite import*
 import pygame, utils
+
 pygame.init()
 
-
 win = pygame.display.set_mode(WIN_SIZE, pygame.FULLSCREEN)
+
+from levels import*
+
 pygame.display.set_caption(CAPTION)
 clock = pygame.time.Clock()
-scene = 'reg_log_menu'
+scene = 'game_lvl'
 selected_input_field = None
+cube = Sprite("images/cube.png", 500, 400, WIN_SIZE[1]//podilyty, WIN_SIZE[1]//podilyty, 5)
 
 create_db()
 
@@ -26,6 +30,12 @@ while True:
         if event.type == pygame.QUIT:
             exit()
         if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+            # якщо ми в рівні і можемо стрибати
+            if scene == 'game_lvl' and cube.can_jump == True:
+                # тоді ми стрибаємо
+                cube.is_jumping = True
+
+
             mouse_x, mouse_y = event.pos
             if scene == 'reg' or 'log':
                 # виділона кнопка
@@ -87,8 +97,11 @@ while True:
         back_text.show(win)
         log_title.show(win)
     
-    if scene == 'game_lvl_0':
+    if scene == 'game_lvl':
         bg.show(win)
         for i in lvl_obj:
             i.show(win)
-            i.x -= 12
+            i.x -= 5
+        cube.collision(lvl_obj)
+        cube.jump(WIN_SIZE[1], podilyty)
+        cube.show(win)
