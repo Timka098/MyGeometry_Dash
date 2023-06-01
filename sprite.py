@@ -1,14 +1,15 @@
-import pygame, image
+import pygame, image, sound
 
-class Sprite(image.Image):
-    def __init__(self, path, x, y, width, height, gravity_speed):
+class Sprite(image.Image, sound.Sound):
+    def __init__(self, path, sound_path, x, y, width, height, gravity_speed):
         super().__init__(path, x, y, width, height)
         self.gravity_speed = gravity_speed#
-        self.width = width#
-        self.height = height#
-        self.jump_counter = 0#
-        self.is_jumping = False#
-        self.can_jump = True#
+        self.width = width# ширина куба
+        self.height = height# висота куба
+        self.jump_counter = 0# лічильник
+        self.is_jumping = False# ми нажали на стрибок?
+        self.can_jump = True# ми можем стрибати?
+        self.jump_sound = sound.Sound(sound_path)
         
     # колізія
     def collision(self, list_obj):
@@ -37,11 +38,13 @@ class Sprite(image.Image):
             self.jump_counter += 1
             # сам стрибок
             self.y -= WIN_SIZE//podilyty*2/20
+            ##self.jump_sound.play()
         # якщо ми не в повітрі
         else:
             # неможна стрибати
             self.is_jumping = False
-            
+        
+        
         
         
         

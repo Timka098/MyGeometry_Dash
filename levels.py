@@ -4,14 +4,14 @@ from image import*
 podilyty = 10
 
 lvl_0 = [
-    'DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD                        D',
-    '                                                                    D',
-    '                                           3                        D',
-    '         D                                                          D',
-    'D                                        D                          D',
-    'D                                     D  D                          D',
+    'DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD                        D                                                                                                       ',
+    '                                                                    D                          DD   D    D     DD                                                                  ',
+    '                                           3                        D                         D     D    D    D                                                                  ',
+    '         D                                                          D                           D   D    D      D                                                               ',
+    'D                                        D                          D                         DD      DD      DD                                                                 ',
+    'D                                     D  D                          D'                                                                                                 ,
     'D        3            33           D33D33D                          D',
-    'DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD',
+    'DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD',
 ]
 game_lvl = lvl_0
 obj_x = 0

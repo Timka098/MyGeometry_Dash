@@ -16,7 +16,7 @@ pygame.display.set_caption(CAPTION)
 clock = pygame.time.Clock()
 scene = 'game_lvl'
 selected_input_field = None
-cube = Sprite("images/cube.png", 500, 400, WIN_SIZE[1]//podilyty, WIN_SIZE[1]//podilyty, 5)
+cube = Sprite("images/cube.png", 'sounds/jump.ogg', 500, 400, WIN_SIZE[1]//podilyty, WIN_SIZE[1]//podilyty, 5)
 
 create_db()
 
@@ -29,11 +29,13 @@ while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             exit()
+        
         if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
             # якщо ми в рівні і можемо стрибати
             if scene == 'game_lvl' and cube.can_jump == True:
                 # тоді ми стрибаємо
                 cube.is_jumping = True
+                cube.jump_sound.play()
 
 
             mouse_x, mouse_y = event.pos
@@ -62,7 +64,10 @@ while True:
                 create_user(input_field_list[0].text.content, input_field_list[1].text.content)
             if log_button.rect.collidepoint(mouse_x, mouse_y) and scene == 'log':
                 user_login(input_field_list[0].text.content, input_field_list[1].text.content, win)
-
+            
+            else:
+                if selected_input_field != None:
+                    utils.show_error('problem000', 1, win)
 
         
         if event.type == pygame.KEYDOWN:
@@ -76,8 +81,8 @@ while True:
                         selected_input_field.text.content = selected_input_field.text.content[:-2]
                     # оновити текст
                     selected_input_field.text.update()
-    if user_login(input_field_list[0].text.content, input_field_list[1].text.content, win) == False:
-        utils.show_error(words[8], 2, win)
+    # if user_login(input_field_list[0].text.content, input_field_list[1].text.content, win) == False and selected_input_field != None:
+    #     utils.show_error(words[8], 2, win)
 
     if scene == 'reg_log_menu':
         reg_text.show(win)
