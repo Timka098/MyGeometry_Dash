@@ -33,9 +33,11 @@ def create_user(user_name, user_password):
 
 # залогінити юзера
 def user_login(user_name, user_password, win):
-
+    
     conn = sqlite3.connect(abspath('data_base.db'))
     cur = conn.cursor()
+
+    
     
     cur.execute("SELECT * FROM user WHERE user_name = ? AND user_password = ?", (user_name, hash_user_password(user_password)))
     # ми перебираєм юзерів, якщо серед них нема нашого:

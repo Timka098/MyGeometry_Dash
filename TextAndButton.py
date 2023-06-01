@@ -14,7 +14,7 @@ try:
                 'login an account',
                 'name',
                 'password',
-                 "error, incorrect name or password."
+                 "error, incorrect name or password.",
                 ]
     elif LANGUAGE == 'ukraine':
         words = ['РЕГІСТРАЦІЯ',
