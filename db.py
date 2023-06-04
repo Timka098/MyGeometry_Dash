@@ -42,7 +42,7 @@ def user_login(user_name, user_password, win):
     cur.execute("SELECT * FROM user WHERE user_name = ? AND user_password = ?", (user_name, hash_user_password(user_password)))
     # ми перебираєм юзерів, якщо серед них нема нашого:
     if cur.fetchone() == None:
-        show_error("user name or password isn't valid", 2, win)
+        # show_error("user name or password isn't valid", win)
         #print("user name or password isn't valid")
         return False
     else:

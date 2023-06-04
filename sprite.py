@@ -9,7 +9,10 @@ class Sprite(image.Image, sound.Sound):
         self.jump_counter = 0# лічильник
         self.is_jumping = False# ми нажали на стрибок?
         self.can_jump = True# ми можем стрибати?
-        self.jump_sound = sound.Sound(sound_path)
+        self.jump_sound = sound.Sound(sound_path, 0.25)
+    def game_over(self):
+        print(0)
+
         
     # колізія
     def collision(self, list_obj):
@@ -18,12 +21,25 @@ class Sprite(image.Image, sound.Sound):
             # якщо знизу це блок
             if "block.png" in obj.path:
                 #перевірка на торкання
-                if self.x+self.width >= obj.x and self.x <= obj.x+obj.width and self.y+self.height >= obj.y and self.y+self.height <= obj.y+obj.height:
-                    # ми не литимо
-                    self.jump_counter = 0
-                    # ми можем стрибнути
-                    self.can_jump = True
-                    break
+                if self.x+self.width >= obj.x and self.x <= obj.x+obj.width:
+                    if self.y+self.height >= obj.y and self.y+self.height <= obj.y+self.gravity_speed:
+                        # ми не литимо
+                        self.jump_counter = 0
+                        # ми можем стрибнути
+                        self.can_jump = True
+                        break
+
+                    elif self.y+self.height >= obj.y and self.y <= obj.y+obj.height:
+                        self.game_over()
+                        
+
+            elif 'spike.png' in obj.path:
+                offset = (obj.x-self.x, obj.y-self.y)
+                is_collision = self.mask.overlap(obj.mask, offset) 
+                if is_collision != None:
+                    self.game_over()
+                #print(is_collision)
+        
                 
         else:
             # ми зараз падаєм тобто не можно стрибати

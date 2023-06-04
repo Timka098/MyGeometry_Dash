@@ -8,6 +8,7 @@ class Image:
         self.image = pygame.transform.scale(self.image, (width, height))
         self.width = width
         self.height = height
+        self.mask = pygame.mask.from_surface(self.image)
     
     def show(self, win):
         win.blit(self.image, (self.x, self.y))

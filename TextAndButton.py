@@ -12,9 +12,12 @@ try:
                 'game name',
                 'register an account',
                 'login an account',
-                'name',
-                'password',
+                '',
+                '',
                  "error, incorrect name or password.",
+                 'please fill the field',
+                 'successful registration',
+                 'the name is already in the database'
                 ]
     elif LANGUAGE == 'ukraine':
         words = ['РЕГІСТРАЦІЯ',

@@ -8,16 +8,16 @@ import pygame, utils, sqlite3
 
 pygame.init()
 
-win = pygame.display.set_mode(WIN_SIZE, pygame.FULLSCREEN)
+win = pygame.display.set_mode(WIN_SIZE)
 
 from levels import*
 
 pygame.display.set_caption(CAPTION)
 clock = pygame.time.Clock()
-scene = 'reg_log_menu'
+scene = 'game_lvl'
 selected_input_field = None
 cube = Sprite("images/cube.png", 'sounds/jump.ogg', 500, 400, WIN_SIZE[1]//podilyty, WIN_SIZE[1]//podilyty, 5)
-need_show_error = False
+number_error = None
 create_db()
 
 bg = Image('images/bg.png', 0, 0, WIN_SIZE[0], WIN_SIZE[1])
@@ -41,7 +41,7 @@ while True:
 
             mouse_x, mouse_y = event.pos
             if scene == 'reg' or 'log':
-                # виділона кнопка
+                # виділина кнопка
                 selected_input_field = None
                 #перебираєм список з кнопками
                 for input_field in input_field_list:
@@ -60,33 +60,53 @@ while True:
             if log_text.rect.collidepoint(mouse_x, mouse_y) and scene == 'reg_log_menu':
                 scene = 'log'
             if back_text.rect.collidepoint(mouse_x, mouse_y) and (scene == 'reg' or scene == 'log'):
+                number_error = None
                 scene = 'reg_log_menu'
             if reg_button.rect.collidepoint(mouse_x, mouse_y) and scene == 'reg':
-
-
-                conn = sqlite3.connect(utils.abspath('data_base.db'))
+                # conn = sqlite3.connect(utils.abspath('data_base.db'))
                 
-                cur = conn.cursor()
-                cur.execute("SELECT user_name FROM user")
-                rows = cur.fetchall()
+                # cur = conn.cursor()
+                # cur.execute("SELECT user_name FROM user")
+                # rows = cur.fetchall()
 
 
-                for row in rows:
-                    if row == input_field_list[0].text.content:
-                        need_show_error == True
+                # for row in rows:
+                #     if row == input_field_list[0].text.content:
+                #         need_show_error == True
+                        
+                #     else:
+                if input_field_list[0].text.content != '' and input_field_list[1].text.content != '':
+                    user_name = input_field_list[0].text.content
+                    conn = sqlite3.connect(utils.abspath('data_base.db'))
+                    cur = conn.cursor()
+                    cur.execute("SELECT * FROM user WHERE user_name = ?", (user_name,))
 
+                    if cur.fetchone() == None:
+                        create_user(input_field_list[0].text.content, input_field_list[1].text.content)
+                        number_error = 10
+                        
+                    else:
+                        number_error = 11
+                    
+                else:
+                    number_error = 9
+                
+
+            if log_button.rect.collidepoint(mouse_x, mouse_y) and scene == 'log':
+                if input_field_list[0].text.content != '' and input_field_list[1].text.content != '':
+
+                    if user_login(input_field_list[0].text.content, input_field_list[1].text.content, win) == False:
+                        number_error = 8
 
                     else:
-                        create_user(input_field_list[0].text.content, input_field_list[1].text.content)
-            if log_button.rect.collidepoint(mouse_x, mouse_y) and scene == 'log':
-        
+                        scene = 'game_lvl'
 
-                user_login(input_field_list[0].text.content, input_field_list[1].text.content, win)
+                    
             
             # else:
             #     if selected_input_field != None:
-
-                need_show_error = True
+                else:
+                    number_error = 9
 
         
         if event.type == pygame.KEYDOWN:
@@ -102,8 +122,8 @@ while True:
                     selected_input_field.text.update()
     # if user_login(input_field_list[0].text.content, input_field_list[1].text.content, win) == False and selected_input_field != None:
     #     utils.show_error(words[8], 2, win)
-    if need_show_error == True:
-        utils.show_error(words[8], 1, win)
+    if number_error != None:
+        utils.show_error(words[number_error], win)
         
     if scene == 'reg_log_menu':
         reg_text.show(win)

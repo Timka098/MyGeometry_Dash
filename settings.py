@@ -1,5 +1,5 @@
 import random
-FPS = 144
+FPS = 100
 BG_COLOR = "#07628f"
 WIN_SIZE = (1920, 1080)
 CAPTION = 'Geometry Dash'
