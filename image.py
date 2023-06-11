@@ -9,6 +9,9 @@ class Image:
         self.width = width
         self.height = height
         self.mask = pygame.mask.from_surface(self.image)
+        self.rect = pygame.Rect(self.x, self.y, self.width, self.height)
     
     def show(self, win):
         win.blit(self.image, (self.x, self.y))
+        self.rect.x = self.x
+        self.rect.y = self.y

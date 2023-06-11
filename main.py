@@ -145,11 +145,24 @@ while True:
         log_title.show(win)
     
     if scene == 'game_lvl':
+        
         bg.show(win)
         for i in lvl_obj:
             i.show(win)
             i.x -= 5
-        
+        for i in cube.removed_coins:
+            i.x -= 5
+        if cube.game_over == True:
+            cube.game_over = False
+            for i in cube.removed_coins:
+                print(cube.removed_coins)
+                lvl_obj.append(i)
+                cube.removed_coins.remove(i)
+            left_block_lvl_1_x = left_block_lvl.x
+            for i in lvl_obj:
+                i.x += -1*left_block_lvl_1_x
+                
+
         cube.collision(lvl_obj)
         cube.jump(WIN_SIZE[1], podilyty)
 

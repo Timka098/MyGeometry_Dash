@@ -1,6 +1,7 @@
 import random
 FPS = 144
 BG_COLOR = "#07628f"
+# 1366, 678
 WIN_SIZE = (1920, 1080)
 CAPTION = 'Geometry Dash'
 MAIN_FONT = 'Showcard Gothic'

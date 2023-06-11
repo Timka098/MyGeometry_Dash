@@ -12,11 +12,10 @@ class Sprite(image.Image, sound.Sound):
         self.jump_sound = sound.Sound(sound_path, 0.25)
         self.coin_sound = sound.Sound('sounds/coin_sound.wav', 0.25)
         self.first_pos = x, y
+        self.game_over = False
+        self.removed_coins = [] 
 
-    def game_over(self):
-        print(self.first_pos)
-        self.x, self.y = self.first_pos
-        return True
+   
 
         
     # колізія
@@ -35,10 +34,9 @@ class Sprite(image.Image, sound.Sound):
                         break
 
                     elif self.y+self.height >= obj.y and self.y <= obj.y+obj.height:
-                        self.game_over()
-            
+                        self.game_over = True
+                    
 
-                        
 
             elif 'spike.png' in obj.path:
                 offset = (obj.x-self.x, obj.y-self.y)
@@ -46,7 +44,12 @@ class Sprite(image.Image, sound.Sound):
                 if is_collision != None:
                     self.game_over()
                 #print(is_collision)
-        
+
+            elif 'coin.png' in obj.path:
+                if self.rect.colliderect(obj.rect):
+                    self.coin_sound.play()
+                    self.removed_coins.append(obj)
+                    list_obj.remove(obj)
                 
         else:
             # ми зараз падаєм тобто не можно стрибати
