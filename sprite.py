@@ -10,8 +10,13 @@ class Sprite(image.Image, sound.Sound):
         self.is_jumping = False# ми нажали на стрибок?
         self.can_jump = True# ми можем стрибати?
         self.jump_sound = sound.Sound(sound_path, 0.25)
+        self.coin_sound = sound.Sound('sounds/coin_sound.wav', 0.25)
+        self.first_pos = x, y
+
     def game_over(self):
-        print(0)
+        print(self.first_pos)
+        self.x, self.y = self.first_pos
+        return True
 
         
     # колізія
@@ -31,6 +36,8 @@ class Sprite(image.Image, sound.Sound):
 
                     elif self.y+self.height >= obj.y and self.y <= obj.y+obj.height:
                         self.game_over()
+            
+
                         
 
             elif 'spike.png' in obj.path:
@@ -59,7 +66,9 @@ class Sprite(image.Image, sound.Sound):
         else:
             # неможна стрибати
             self.is_jumping = False
-        
+    # def collide_coin(self, coin):
+    #     if self.image.pygame.rect.pygame.Rect.colliderect(coin):
+    #         print(0)
         
         
         

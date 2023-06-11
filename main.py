@@ -19,7 +19,7 @@ selected_input_field = None
 cube = Sprite("images/cube.png", 'sounds/jump.ogg', 500, 400, WIN_SIZE[1]//podilyty, WIN_SIZE[1]//podilyty, 5)
 number_error = None
 create_db()
-
+coin_counter = Text(10, 10, 'coin counter ', 24, MAIN_FONT, MAIN_TEXT_COLOR)
 bg = Image('images/bg.png', 0, 0, WIN_SIZE[0], WIN_SIZE[1])
 
 while True:
@@ -149,7 +149,11 @@ while True:
         for i in lvl_obj:
             i.show(win)
             i.x -= 5
+        
         cube.collision(lvl_obj)
         cube.jump(WIN_SIZE[1], podilyty)
+
+        # cube.collide_coin(coin)
         cube.show(win)
 
+        coin_counter.show(win)
