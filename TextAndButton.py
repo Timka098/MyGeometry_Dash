@@ -4,12 +4,13 @@ from settings import *
 from box import Box
 from InputField import InputField
 
+#14
 try:
     if LANGUAGE == 'english':
         words = ['registration',
                 'login',
                 'back to menu',
-                'game name',
+                'MyGeometryDash',
                 'register an account',
                 'login an account',
                 '',
@@ -17,7 +18,9 @@ try:
                  "error, incorrect name or password.",
                  'please fill the field',
                  'successful registration',
-                 'the name is already in the database'
+                 'the name is already in the database',
+                 'coins: ',
+                 'level completed'
                 ]
     elif LANGUAGE == 'ukraine':
         words = ['РЕГІСТРАЦІЯ',
@@ -46,6 +49,8 @@ try:
                         InputField(10, 260, 500, 50, MAIN_TEXT_COLOR, None, (0,0,0),
                            words[7], 48, MAIN_FONT, INPUT_MAIN_TEXT_COLOR)
                            ]
+    completed_lvl_text = Text(WIN_SIZE[0]/2, 10, words[13], 124, MAIN_FONT, MAIN_TEXT_COLOR)
+    # completed_lvl_text.rect.x -= completed_lvl_text.rect.width/2
 
 except NameError:
     print("LANGUAGE variable is not defined. Please check your settings.py file.")

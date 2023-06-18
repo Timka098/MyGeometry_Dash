@@ -8,7 +8,7 @@ import pygame, utils, sqlite3
 
 pygame.init()
 
-win = pygame.display.set_mode(WIN_SIZE)
+win = pygame.display.set_mode(WIN_SIZE, pygame.FULLSCREEN)
 
 from levels import*
 
@@ -21,6 +21,8 @@ number_error = None
 create_db()
 coin_counter = Text(10, 10, 'coin counter ', 24, MAIN_FONT, MAIN_TEXT_COLOR)
 bg = Image('images/bg.png', 0, 0, WIN_SIZE[0], WIN_SIZE[1])
+
+
 
 while True:
     pygame.display.flip()
@@ -144,23 +146,21 @@ while True:
         back_text.show(win)
         log_title.show(win)
     
+    if scene == 'win_win':
+        bg.show(win)
+        completed_lvl_text.show(win)
+    
     if scene == 'game_lvl':
         
         bg.show(win)
         for i in lvl_obj:
             i.show(win)
             i.x -= 5
-        for i in cube.removed_coins:
-            i.x -= 5
-        if cube.game_over == True:
+        if cube.game_over:
+            lvl_obj = []
+            make_lvl(game_lvl, lvl_obj)
             cube.game_over = False
-            for i in cube.removed_coins:
-                print(cube.removed_coins)
-                lvl_obj.append(i)
-                cube.removed_coins.remove(i)
-            left_block_lvl_1_x = left_block_lvl.x
-            for i in lvl_obj:
-                i.x += -1*left_block_lvl_1_x
+
                 
 
         cube.collision(lvl_obj)
@@ -168,5 +168,10 @@ while True:
 
         # cube.collide_coin(coin)
         cube.show(win)
-
+        
         coin_counter.show(win)
+        # print(len(cube.removed_coins))
+        coin_counter.content = f"{words[12]}{cube.taken_coins}"
+        coin_counter.update()
+        if cube.game_win:
+            scene = 'win_win'
