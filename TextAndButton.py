@@ -49,7 +49,7 @@ try:
                         InputField(10, 260, 500, 50, MAIN_TEXT_COLOR, None, (0,0,0),
                            words[7], 48, MAIN_FONT, INPUT_MAIN_TEXT_COLOR)
                            ]
-    completed_lvl_text = Text(WIN_SIZE[0]/2, 10, words[13], 124, MAIN_FONT, MAIN_TEXT_COLOR)
+    completed_lvl_text = Text(450, 10, words[13], 124, MAIN_FONT, MAIN_TEXT_COLOR)
     # completed_lvl_text.rect.x -= completed_lvl_text.rect.width/2
 
 except NameError:

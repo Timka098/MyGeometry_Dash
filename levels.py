@@ -10,7 +10,7 @@ lvl_0 = [
     '                                      D                          D                         DD      DD      DD                                                                                              ',
     '                                                                                                                                                                                                                             ',
     'D                              ccccccccccccccccc                                                                                                                                                 ccccccccccccccccccc        D'                                                                                                 ,
-    'D              f            cDDDDDDDDDD                         f             D      D      D     D      D       c      D                                                                                                  ',
+    'D                     f     cDDDDDDDDDD                         f             D      D      D     D      D       c      D                                                                                                  ',
     'DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD',
 ]
 game_lvl = lvl_0

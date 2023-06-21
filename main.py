@@ -21,7 +21,9 @@ number_error = None
 create_db()
 coin_counter = Text(10, 10, 'coin counter ', 24, MAIN_FONT, MAIN_TEXT_COLOR)
 bg = Image('images/bg.png', 0, 0, WIN_SIZE[0], WIN_SIZE[1])
-
+leaders_button = Image('images/leaders_button.png', 10, 10, 200, 200)
+menu_button = Image('images/menu_button.png', 10, 210, 200, 200)
+retry_button = Image('images/retry_button.png', 10, 420, 200, 200)
 
 
 while True:
@@ -38,10 +40,22 @@ while True:
             if scene == 'game_lvl' and cube.can_jump == True:
                 # тоді ми стрибаємо
                 cube.is_jumping = True
-                cube.jump_sound.play()
+                #cube.jump_sound.play()
 
 
             mouse_x, mouse_y = event.pos
+            if scene == 'win_win':
+                if leaders_button.rect.collidepoint(mouse_x, mouse_y):
+                    scene = 'win_leaders'
+                if retry_button.rect.collidepoint(mouse_x, mouse_y):
+                    scene = 'game_lvl'
+                
+                    cube.game_over = False
+                if menu_button.rect.collidepoint(mouse_x, mouse_y):
+                    
+                    scene = 'reg_log_menu'
+                    
+                    
             if scene == 'reg' or 'log':
                 # виділина кнопка
                 selected_input_field = None
@@ -149,6 +163,9 @@ while True:
     if scene == 'win_win':
         bg.show(win)
         completed_lvl_text.show(win)
+        leaders_button.show(win)
+        menu_button.show(win)
+        retry_button.show(win)
     
     if scene == 'game_lvl':
         
