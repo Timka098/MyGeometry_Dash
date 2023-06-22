@@ -48,9 +48,12 @@ while True:
                 if leaders_button.rect.collidepoint(mouse_x, mouse_y):
                     scene = 'win_leaders'
                 if retry_button.rect.collidepoint(mouse_x, mouse_y):
+                    cube.game_win = False
                     scene = 'game_lvl'
-                
-                    cube.game_over = False
+                    
+                    
+            
+                   
                 if menu_button.rect.collidepoint(mouse_x, mouse_y):
                     
                     scene = 'reg_log_menu'

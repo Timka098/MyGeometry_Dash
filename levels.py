@@ -6,11 +6,11 @@ podilyty = 10
 lvl_0 = [
     'DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD                        D                                                                                                              ',
     '                                                                    D                          DD   D    D     DD                                                                  ',
-    '         D                                 D                        D                         D     D    D    D                                                                    ',
-    '                                      D                          D                         DD      DD      DD                                                                                              ',
+    '                                                                    D                         D     D    D    D                                                                    ',
+    '         33333333333333                                                        D                         DD      DD      DD                                                                                              ',
     '                                                                                                                                                                                                                             ',
-    'D                              ccccccccccccccccc                                                                                                                                                 ccccccccccccccccccc        D'                                                                                                 ,
-    'D                     f     cDDDDDDDDDD                         f             D      D      D     D      D       c      D                                                                                                  ',
+    'D                              ccccccccccccccccc                              f                                                                                                                   ccccccccccccccccccc        D'                                                                                                 ,
+    'D                          cDDDDDDDDDD                                      D      D      D     D      D       c      D                                                                         f                         ',
     'DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD',
 ]
 game_lvl = lvl_0
