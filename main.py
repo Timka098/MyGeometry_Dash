@@ -14,7 +14,7 @@ from levels import*
 
 pygame.display.set_caption(CAPTION)
 clock = pygame.time.Clock()
-scene = 'game_lvl'
+scene = 'reg_log_menu'
 selected_input_field = None
 cube = Sprite("images/cube.png", 'sounds/jump.ogg', 500, 400, WIN_SIZE[1]//podilyty, WIN_SIZE[1]//podilyty, 5)
 number_error = None
@@ -48,12 +48,9 @@ while True:
                 if leaders_button.rect.collidepoint(mouse_x, mouse_y):
                     scene = 'win_leaders'
                 if retry_button.rect.collidepoint(mouse_x, mouse_y):
-                    cube.game_win = False
+                    cube.game_over = True
                     scene = 'game_lvl'
-                    
-                    
-            
-                   
+                    cube.game_win = False
                 if menu_button.rect.collidepoint(mouse_x, mouse_y):
                     
                     scene = 'reg_log_menu'
@@ -81,6 +78,10 @@ while True:
             if back_text.rect.collidepoint(mouse_x, mouse_y) and (scene == 'reg' or scene == 'log'):
                 number_error = None
                 scene = 'reg_log_menu'
+            if play_text.rect.collidepoint(mouse_x, mouse_y) and scene == 'reg_log_menu':
+                cube.game_over = True
+                scene = 'game_lvl'
+                cube.game_win = False
             if reg_button.rect.collidepoint(mouse_x, mouse_y) and scene == 'reg':
                 # conn = sqlite3.connect(utils.abspath('data_base.db'))
                 
@@ -148,6 +149,7 @@ while True:
         reg_text.show(win)
         log_text.show(win)
         game_name.show(win)
+        play_text.show(win)
     
     if scene == 'reg':
         for input_field in input_field_list:
