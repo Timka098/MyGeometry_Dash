@@ -1,3 +1,15 @@
+"""
+
+
+           УВАГА!
+
+            коментарі # для вас, а коментарі #! для мене, щоб я не путався
+            
+            (інші версії цього проєкту https://github.com/Timka098/MyGeometry_Dash)
+
+"""
+
+# імпорт і ініцилізація
 from db import *
 from settings import *
 from text import Text
@@ -12,6 +24,8 @@ win = pygame.display.set_mode(WIN_SIZE, pygame.FULLSCREEN)
 
 from levels import*
 
+# головні змінні і налаштування
+
 pygame.display.set_caption(CAPTION)
 clock = pygame.time.Clock()
 scene = 'reg_log_menu'
@@ -25,26 +39,32 @@ leaders_button = Image('images/leaders_button.png', 10, 10, 200, 200)
 menu_button = Image('images/menu_button.png', 10, 210, 200, 200)
 retry_button = Image('images/retry_button.png', 10, 420, 200, 200)
 
+#головний цикл
 
 while True:
+    # все про відновку дісплея
     pygame.display.flip()
     clock.tick(FPS)
     win.fill(BG_COLOR)
+    
+    # перебираєм евенти, тобто рух, натиснули ми на хрестик ітд...
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             exit()
         
+        # якщо ми натиснули ЛКМ
         if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
             need_show_error = False
-            # якщо ми в рівні і можемо стрибати
+            #! якщо ми в рівні і можемо стрибати
             if scene == 'game_lvl' and cube.can_jump == True:
-                # тоді ми стрибаємо
+                #! тоді ми стрибаємо
                 cube.is_jumping = True
-                #cube.jump_sound.play()
 
-
+            # курсор на екрані
             mouse_x, mouse_y = event.pos
+            # якщо ми вийграли, то нас переносять на це меню
             if scene == 'win_win':
+                # якщо ми натиснули на кнопку, то нас перенесуть на сцену кнопки
                 if leaders_button.rect.collidepoint(mouse_x, mouse_y):
                     scene = 'win_leaders'
                 if retry_button.rect.collidepoint(mouse_x, mouse_y):
@@ -55,7 +75,7 @@ while True:
                     
                     scene = 'reg_log_menu'
                     
-                    
+            # це для полей вводу
             if scene == 'reg' or 'log':
                 # виділина кнопка
                 selected_input_field = None
@@ -70,7 +90,8 @@ while True:
                         input_field.border_width = 5
                         #кнопка на яку ми нажали = input_field
                         selected_input_field = input_field
-                    
+            
+            # якщо ми натиснули на кнопку, то нас перенесуть на сцену кнопки
             if reg_text.rect.collidepoint(mouse_x, mouse_y) and scene == 'reg_log_menu':
                 scene = 'reg'
             if log_text.rect.collidepoint(mouse_x, mouse_y) and scene == 'reg_log_menu':
@@ -82,19 +103,10 @@ while True:
                 cube.game_over = True
                 scene = 'game_lvl'
                 cube.game_win = False
+            # тут регістрація все інше мені лінь розписувати, якщо подивитися інші версії то тих коментарів тут не було (https://github.com/Timka098/MyGeometry_Dash)
             if reg_button.rect.collidepoint(mouse_x, mouse_y) and scene == 'reg':
-                # conn = sqlite3.connect(utils.abspath('data_base.db'))
                 
-                # cur = conn.cursor()
-                # cur.execute("SELECT user_name FROM user")
-                # rows = cur.fetchall()
-
-
-                # for row in rows:
-                #     if row == input_field_list[0].text.content:
-                #         need_show_error == True
-                        
-                #     else:
+                
                 if input_field_list[0].text.content != '' and input_field_list[1].text.content != '':
                     user_name = input_field_list[0].text.content
                     conn = sqlite3.connect(utils.abspath('data_base.db'))
@@ -111,7 +123,7 @@ while True:
                 else:
                     number_error = 9
                 
-
+            # це щоб війти в акаунт
             if log_button.rect.collidepoint(mouse_x, mouse_y) and scene == 'log':
                 if input_field_list[0].text.content != '' and input_field_list[1].text.content != '':
 
@@ -121,17 +133,13 @@ while True:
                     else:
                         scene = 'game_lvl'
 
-                    
-            
-            # else:
-            #     if selected_input_field != None:
                 else:
                     number_error = 9
 
-        
+        # тепер ви відсліджуєм натиск клавіш на клавіатурі
         if event.type == pygame.KEYDOWN:
             if scene == 'reg' or 'log':
-                #!
+                
                 if selected_input_field != None:
                     # додати текст
                     if len(selected_input_field.text.content) < 20:
@@ -140,8 +148,7 @@ while True:
                         selected_input_field.text.content = selected_input_field.text.content[:-2]
                     # оновити текст
                     selected_input_field.text.update()
-    # if user_login(input_field_list[0].text.content, input_field_list[1].text.content, win) == False and selected_input_field != None:
-    #     utils.show_error(words[8], 2, win)
+
     if number_error != None:
         utils.show_error(words[number_error], win)
         
@@ -188,11 +195,9 @@ while True:
         cube.collision(lvl_obj)
         cube.jump(WIN_SIZE[1], podilyty)
 
-        # cube.collide_coin(coin)
         cube.show(win)
         
         coin_counter.show(win)
-        # print(len(cube.removed_coins))
         coin_counter.content = f"{words[12]}{cube.taken_coins}"
         coin_counter.update()
         if cube.game_win:

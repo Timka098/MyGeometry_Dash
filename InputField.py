@@ -10,7 +10,7 @@ class InputField(Box):
                  content, text_size, text_font, text_color):
         
         super().__init__(x, y, width, height, color, border_width, border_color)
-        self.text = Text(self.rect.x+10, self.rect.y+10, content, text_size, text_font, text_color)
+        self.text = Text(self.rect.x+10, self.rect.y+5, content, text_size, text_font, text_color)
 
     def show(self, win):
         super().show(win)

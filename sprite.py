@@ -9,12 +9,12 @@ class Sprite(image.Image, sound.Sound):
         self.jump_counter = 0# лічильник
         self.is_jumping = False# ми нажали на стрибок?
         self.can_jump = True# ми можем стрибати?
-        self.jump_sound = sound.Sound(sound_path, 0.25)
-        self.coin_sound = sound.Sound('sounds/coin_sound.wav', 0.25)
-        self.first_pos = x, y
-        self.game_over = False
-        self.taken_coins = 0
-        self.game_win = False
+        self.jump_sound = sound.Sound(sound_path, 0.25)# звук при стрибку
+        self.coin_sound = sound.Sound('sounds/coin_sound.wav', 0.25)# звук для монет
+        self.first_pos = x, y# позиція
+        self.game_over = False# гра закінчилась?
+        self.taken_coins = 0# взято монет
+        self.game_win = False# ми вийграли?
       
     # колізія
     def collision(self, list_obj):
@@ -36,15 +36,15 @@ class Sprite(image.Image, sound.Sound):
                         self.taken_coins = 0
                     
 
-
+            # колізія для шипа
             elif 'spike.png' in obj.path:
                 offset = (obj.x-self.x, obj.y-self.y)
                 is_collision = self.mask.overlap(obj.mask, offset) 
                 if is_collision != None:
-                    self.game_over()
+                    self.game_over = True
                     self.taken_coins=0
-                #print(is_collision)
 
+            # колізія монети
             elif 'coin.png' in obj.path:
                 if self.rect.colliderect(obj.rect):
                     self.coin_sound.play()
@@ -52,6 +52,7 @@ class Sprite(image.Image, sound.Sound):
                     list_obj.remove(obj)
                     self.taken_coins += 1
             
+            # якщо ми дійшли до фініша
             elif 'finish.png' in obj.path:
                 if self.x >= obj.x:
                     self.game_win = True
@@ -74,10 +75,6 @@ class Sprite(image.Image, sound.Sound):
         else:
             # неможна стрибати
             self.is_jumping = False
-    # def collide_coin(self, coin):
-    #     if self.image.pygame.rect.pygame.Rect.colliderect(coin):
-    #         print(0)
-        
-        
+
         
         
