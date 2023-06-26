@@ -23,7 +23,10 @@ try:
                  'coins: ',
                  'level completed',
                  'play',
-                 'P.S. there are settings in the game, you need to change what you need in settings.py'
+                 'P.S. there are settings in the game, you need to change what you need in settings.py',
+                 'leaders ',
+                 'user name',
+                 'taken coins'
                 ]
     elif LANGUAGE == 'ukraine':
         words = ["реєстрація",
@@ -41,7 +44,10 @@ try:
              "монети: ",
              "рівень пройдено",
              "грати",
-             "P.S. в грі є налаштування, потрібно в settings.py змінити те що вам потрібно"
+             "P.S. в грі є налаштування, потрібно в settings.py змінити те що вам потрібно",
+             'лідери',
+             'користувач ',
+             'монети '
             ]
 
     else:
@@ -51,9 +57,9 @@ try:
     reg_text = Text(10, 0, words[0], 24, MAIN_FONT, MAIN_TEXT_COLOR)
     log_text = Text(10, 20, words[1], 24, MAIN_FONT, MAIN_TEXT_COLOR)
     back_text = Text(10, 800, words[2], 48, MAIN_FONT, MAIN_TEXT_COLOR)
-    game_name = Text(10, 50, words[3], 140, MAIN_FONT, MAIN_TEXT_COLOR)
-    reg_title = Text(10, 70, words[4], 140, MAIN_FONT, MAIN_TEXT_COLOR)
-    log_title = Text(10, 70, words[5], 140, MAIN_FONT, MAIN_TEXT_COLOR)
+    game_name = Text(10, 40, words[3], 140, MAIN_FONT, MAIN_TEXT_COLOR)
+    reg_title = Text(10, 40, words[4], 140, MAIN_FONT, MAIN_TEXT_COLOR)
+    log_title = Text(10, 40, words[5], 140, MAIN_FONT, MAIN_TEXT_COLOR)
     log_button = Text(10, 320, words[1], 48, MAIN_FONT, MAIN_TEXT_COLOR)
     reg_button = Text(10, 320, words[0], 48, MAIN_FONT, MAIN_TEXT_COLOR)
     input_field_list = [InputField(10, 200, 500, 50, MAIN_TEXT_COLOR, None, MAIN_TEXT_COLOR,
@@ -62,9 +68,16 @@ try:
                            words[7], 48, MAIN_FONT, INPUT_MAIN_TEXT_COLOR)
                            ]
     completed_lvl_text = Text(450, 10, words[13], 124, MAIN_FONT, MAIN_TEXT_COLOR)
-    play_text = Text(10, 200, words[14], 48, MAIN_FONT, MAIN_TEXT_COLOR)
+    #play_text = Text(10, 200, words[14], 48, MAIN_FONT, MAIN_TEXT_COLOR)
     about_settings_text = Text(10, 800, words[15], 24, MAIN_FONT, MAIN_TEXT_COLOR)
-
+    
+    leaders_title = Text(10, 40, words[16], 140, MAIN_FONT, MAIN_TEXT_COLOR)
+    leaders_texts = [
+        Text(10, 200, '', 48, MAIN_FONT, MAIN_TEXT_COLOR),
+        Text(10, 250, '', 48, MAIN_FONT, MAIN_TEXT_COLOR),
+        Text(10, 300, '', 48, MAIN_FONT, MAIN_TEXT_COLOR),
+        Text(10, 350, '', 48, MAIN_FONT, MAIN_TEXT_COLOR),
+        Text(10, 400, '', 48, MAIN_FONT, MAIN_TEXT_COLOR)]
 # якщо ви не правильно введете мову, вам напишуть помилку
 except NameError:
     print("LANGUAGE variable is not defined. Please check your settings.py file.")

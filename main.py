@@ -38,6 +38,7 @@ bg = Image('images/bg.png', 0, 0, WIN_SIZE[0], WIN_SIZE[1])
 leaders_button = Image('images/leaders_button.png', 10, 10, 200, 200)
 menu_button = Image('images/menu_button.png', 10, 210, 200, 200)
 retry_button = Image('images/retry_button.png', 10, 420, 200, 200)
+account_id = None
 
 #головний цикл
 
@@ -99,10 +100,10 @@ while True:
             if back_text.rect.collidepoint(mouse_x, mouse_y) and (scene == 'reg' or scene == 'log'):
                 number_error = None
                 scene = 'reg_log_menu'
-            if play_text.rect.collidepoint(mouse_x, mouse_y) and scene == 'reg_log_menu':
-                cube.game_over = True
-                scene = 'game_lvl'
-                cube.game_win = False
+            # if play_text.rect.collidepoint(mouse_x, mouse_y) and scene == 'reg_log_menu':
+            #     cube.game_over = True
+            #     scene = 'game_lvl'
+            #     cube.game_win = False
             # тут регістрація все інше мені лінь розписувати, якщо подивитися інші версії то тих коментарів тут не було (https://github.com/Timka098/MyGeometry_Dash)
             if reg_button.rect.collidepoint(mouse_x, mouse_y) and scene == 'reg':
                 
@@ -126,11 +127,13 @@ while True:
             # це щоб війти в акаунт
             if log_button.rect.collidepoint(mouse_x, mouse_y) and scene == 'log':
                 if input_field_list[0].text.content != '' and input_field_list[1].text.content != '':
-
-                    if user_login(input_field_list[0].text.content, input_field_list[1].text.content, win) == False:
+                    user_info = user_login(input_field_list[0].text.content, input_field_list[1].text.content, win)
+                    if user_info == False:
                         number_error = 8
+                        
 
                     else:
+                        account_id = user_info
                         scene = 'game_lvl'
 
                 else:
@@ -156,7 +159,7 @@ while True:
         reg_text.show(win)
         log_text.show(win)
         game_name.show(win)
-        play_text.show(win)
+        # play_text.show(win)
     
     if scene == 'reg':
         for input_field in input_field_list:
@@ -178,7 +181,9 @@ while True:
         leaders_button.show(win)
         menu_button.show(win)
         retry_button.show(win)
-    
+    if scene == 'win_leaders':
+        for i in leaders_texts:
+            i.show(win)
     if scene == 'game_lvl':
         
         bg.show(win)
@@ -200,5 +205,16 @@ while True:
         coin_counter.show(win)
         coin_counter.content = f"{words[12]}{cube.taken_coins}"
         coin_counter.update()
+        
         if cube.game_win:
+            create_result(account_id, cube.taken_coins)
             scene = 'win_win'
+            index = 0
+            for i in get_top_results():
+                print(i)
+                i = f'{words[17]} - {get_user_name(i[2])} {words[18]} - {i[1]}'
+                leaders_texts[index].content = i
+                leaders_texts[index].update()
+                index+=1    
+            
+            cube.taken_coins = 0

@@ -11,9 +11,9 @@ lvl_0 = [
     '',
     'DDDDDDDDDDDD',
     '                      ',
-    '                      ',
+    '     cccccc                 ',
     '                DD        ',
-    '           ccDDDD DDDD33         33  f',
+    '           cDDDD DDDD33         c3 cccccc cf',
     'DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD',
 ]
 # рівень

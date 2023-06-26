@@ -19,5 +19,12 @@ INPUT_MAIN_TEXT_COLOR = '#a8b6cf'
 
 # мова (знизу мови які поки є)
 #english, ukraine
-LANGUAGE = 'english'
+LANGUAGE = 'ukraine'
+
+
+
+
+
+
+
 #!LANGUAGE = random.choice(['english', 'ukraine', 'french', 'german', 'spanish', 'italian', 'portuguese', 'polish', 'bulgarian'])
