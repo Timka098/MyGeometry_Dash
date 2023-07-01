@@ -17,18 +17,15 @@ from TextAndButton import*
 from image import*
 from sprite import*
 import pygame, utils, sqlite3
-
 pygame.init()
-
 win = pygame.display.set_mode(WIN_SIZE, pygame.FULLSCREEN)
-
 from levels import*
 
 # головні змінні і налаштування
 
 pygame.display.set_caption(CAPTION)
 clock = pygame.time.Clock()
-scene = 'reg_log_menu'
+scene = 'win_win'
 selected_input_field = None
 cube = Sprite("images/cube.png", 'sounds/jump.ogg', 500, 400, WIN_SIZE[1]//podilyty, WIN_SIZE[1]//podilyty, 5)
 number_error = None
@@ -75,7 +72,8 @@ while True:
                 if menu_button.rect.collidepoint(mouse_x, mouse_y):
                     
                     scene = 'reg_log_menu'
-                    
+            if scene == 'win_leaders' and back_text.rect.collidepoint(mouse_x, mouse_y):
+                scene = 'win_win'
             # це для полей вводу
             if scene == 'reg' or 'log':
                 # виділина кнопка
@@ -167,6 +165,8 @@ while True:
         reg_title.show(win)
         back_text.show(win)
         reg_button.show(win)
+        title_name_text.show(win)
+        title_password_text.show(win)
         
     if scene == 'log':
         log_button.show(win)
@@ -174,8 +174,11 @@ while True:
             input_field.show(win)
         back_text.show(win)
         log_title.show(win)
+        title_name_text.show(win)
+        title_password_text.show(win)
     
     if scene == 'win_win':
+        number_error = None
         bg.show(win)
         completed_lvl_text.show(win)
         leaders_button.show(win)
@@ -184,6 +187,8 @@ while True:
     if scene == 'win_leaders':
         for i in leaders_texts:
             i.show(win)
+        back_text.show(win)
+        leaders_title.show(win)
     if scene == 'game_lvl':
         
         bg.show(win)

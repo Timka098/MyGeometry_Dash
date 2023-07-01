@@ -26,7 +26,8 @@ try:
                  'P.S. there are settings in the game, you need to change what you need in settings.py',
                  'leaders ',
                  'user name',
-                 'taken coins'
+                 'taken coins',
+                 'password'
                 ]
     elif LANGUAGE == 'ukraine':
         words = ["реєстрація",
@@ -47,7 +48,8 @@ try:
              "P.S. в грі є налаштування, потрібно в settings.py змінити те що вам потрібно",
              'лідери',
              'користувач ',
-             'монети '
+             'монети ',
+             'пароль'
             ]
 
     else:
@@ -70,7 +72,8 @@ try:
     completed_lvl_text = Text(450, 10, words[13], 124, MAIN_FONT, MAIN_TEXT_COLOR)
     #play_text = Text(10, 200, words[14], 48, MAIN_FONT, MAIN_TEXT_COLOR)
     about_settings_text = Text(10, 800, words[15], 24, MAIN_FONT, MAIN_TEXT_COLOR)
-    
+    title_name_text = Text(530, 200, words[17], 48, MAIN_FONT, MAIN_TEXT_COLOR)
+    title_password_text = Text(530, 260, words[19], 48, MAIN_FONT, MAIN_TEXT_COLOR)
     leaders_title = Text(10, 40, words[16], 140, MAIN_FONT, MAIN_TEXT_COLOR)
     leaders_texts = [
         Text(10, 200, '', 48, MAIN_FONT, MAIN_TEXT_COLOR),
@@ -78,6 +81,7 @@ try:
         Text(10, 300, '', 48, MAIN_FONT, MAIN_TEXT_COLOR),
         Text(10, 350, '', 48, MAIN_FONT, MAIN_TEXT_COLOR),
         Text(10, 400, '', 48, MAIN_FONT, MAIN_TEXT_COLOR)]
+
 # якщо ви не правильно введете мову, вам напишуть помилку
 except NameError:
     print("LANGUAGE variable is not defined. Please check your settings.py file.")
