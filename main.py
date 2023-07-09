@@ -25,7 +25,7 @@ from levels import*
 
 pygame.display.set_caption(CAPTION)
 clock = pygame.time.Clock()
-scene = 'win_win'
+scene = 'win_leaders'
 selected_input_field = None
 cube = Sprite("images/cube.png", 'sounds/jump.ogg', 500, 400, WIN_SIZE[1]//podilyty, WIN_SIZE[1]//podilyty, 5)
 number_error = None
@@ -216,7 +216,6 @@ while True:
             scene = 'win_win'
             index = 0
             for i in get_top_results():
-                print(i)
                 i = f'{words[17]} - {get_user_name(i[2])} {words[18]} - {i[1]}'
                 leaders_texts[index].content = i
                 leaders_texts[index].update()

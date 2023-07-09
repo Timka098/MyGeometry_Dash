@@ -83,7 +83,6 @@ def get_user_name(id):
     conn = sqlite3.connect(abspath('data_base.db'))
     cur = conn.cursor()
     cur.execute("""SELECT * FROM user WHERE id = ?""", (id,))
-    print(id)
     return cur.fetchone()[1]
     conn.commit()
     conn.close()

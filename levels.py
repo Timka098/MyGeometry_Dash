@@ -7,14 +7,16 @@ podilyty = 10
 
 # поки в нас тільки 0 рівень для тесту
 lvl_0 = [
-    '',
-    '',
-    'DDDDDDDDDDDD',
-    '                      ',
-    '     cccccc                 ',
-    '                DD        ',
-    '           cDDDD DDDD33         c3 cccccc cf',
-    'DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD',
+    ''
+    'DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDccccDDDDDD   DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD',
+    '            c                                                      333   ',
+    'DDDDDDDDDDDD                                                               ',
+    '                                                             3           ',
+    '                                                      DDDDDDDD  DDDDD       ', 
+    '                                                DDDD                                                                 ff',
+    '                   3      33                 DDDD3333    c 33                         3        33        3          f333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333',
+    'DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD      DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD',
+    '                                                      DDDDDDDD'
 ]
 # рівень
 game_lvl = lvl_0
